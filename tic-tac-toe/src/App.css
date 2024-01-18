@@ -35,7 +35,6 @@ body {
   width: 300px;
   height: 300px;
   transform: rotate(-2deg);
-  cursor: url('path-to-image.png'), auto;
 }
 
 input {
@@ -47,6 +46,7 @@ input {
   border-color: #000000;
   border-style: solid;
   padding-left: 12px;
+  cursor: url('assets/pencil.png'), auto;
 }
 
 .win-card {
