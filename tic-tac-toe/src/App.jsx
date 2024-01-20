@@ -66,7 +66,7 @@ function App() {
         {winner && (
         <div className="win-card">
           <div className="win-content">
-            <p>{`${winner} is the Winner!`}</p>
+            <p>{`${winner}`}<br />wins!</p>
           </div>
           <button id='play-again-btn'  onClick={resetGame}>Play Again</button>
         </div>
