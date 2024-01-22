@@ -22,7 +22,7 @@ function App() {
 
   const handleInputChange = (index, value) => {
 
-    // allow only the letters 'X' and 'O' in the input field
+    // allow only the letters 'X' and 'O' to be entered in the input field
     const isValidInput = /^[XO]$/i.test(value);
 
     if (isValidInput) {
