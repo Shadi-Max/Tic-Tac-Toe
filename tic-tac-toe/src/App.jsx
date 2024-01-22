@@ -4,8 +4,8 @@ import './App.css'
 function App() {
   const [inputValues, setInputValues] = useState(Array(16).fill(''))
   const [winner, setWinner] = useState(null)
-  //Winning Combinations
 
+  //adding Winning Combinations
   const winningCombinations = [
     [0, 1, 2], [1, 2, 3],
     [4, 5, 6], [5, 6, 7],
@@ -21,28 +21,34 @@ function App() {
   ]
 
   const handleInputChange = (index, value) => {
-    const newInputValues = [...inputValues]
-    newInputValues[index] = value
-    setInputValues(newInputValues)
 
-    // Logic for winning combinations
+    // allow only the letters 'X' and 'O' in the input field
+    const isValidInput = /^[XO]$/i.test(value);
 
-    for (const combination of winningCombinations) {
-      const [a, b, c] = combination
-      if (
-        newInputValues[a] === 'X' && newInputValues[b] === 'X' && newInputValues[c] === 'X'
-      ) {
-        setWinner('X')
-        return
-      } else if (
-        newInputValues[a] === 'O' && newInputValues[b] === 'O' && newInputValues[c] === 'O'
-      ) {
-        setWinner('O')
-        return
+    if (isValidInput) {
+      const newInputValues = [...inputValues]
+      newInputValues[index] = value
+      setInputValues(newInputValues)
+
+      // Adding the logic for winning combinations
+      // If the winning combination matches the one of the winningCombinations arrays the game will set X or O as a winner
+      for (const combination of winningCombinations) {
+        const [a, b, c] = combination
+        if (
+          newInputValues[a] === 'X' && newInputValues[b] === 'X' && newInputValues[c] === 'X'
+        ) {
+          setWinner('X')
+          return
+        } else if (
+          newInputValues[a] === 'O' && newInputValues[b] === 'O' && newInputValues[c] === 'O'
+        ) {
+          setWinner('O')
+          return
+        }
       }
     }
   };
-
+  // empty all the fields when resetting the game
   const resetGame = () => {
     setInputValues(Array(16).fill(''));
     setWinner(null);
